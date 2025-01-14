@@ -1,3 +1,7 @@
+@font-face {
+    font-family: "GeneralSans"; 
+    src: url("./GeneralSans-Medium.otf");
+}
 * {
     margin: 0;
     padding: 0;
@@ -11,11 +15,15 @@
     background-color: white;
     position: absolute;
     z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .main {
     position: relative;
     overflow-x: hidden;
     background-color: black;
+    font-family: 'GeneralSans';
 }
 
 .page1 {
@@ -119,7 +127,7 @@
 }
 .elem h1{
     text-transform: uppercase;
-    font-size: 5rem;
+    font-size: 7vw;
     padding: 2.5rem 0;
 }
 .elem h5{
@@ -141,13 +149,15 @@
     width: fit-content;
     margin-top: 3rem;
 }
-.page2 .btn a{
+.page2 .btn:hover{
+    background-color: #a3a3a3;
+}
+.page2 .btn h4{
     text-decoration: none;
     color: white;
 }
-.page2 .btn sup{
-    font-size: 0.8rem;
-    color: #a3a3a3;
+.page2 .btn h4:hover{
+    color: black;
 }
 .marqueepage{
     background-color: black;
@@ -198,12 +208,16 @@
     font-size: 1rem;
     line-height: 1.5;
 }
-.page3 a{
+.page3 .a{
     text-decoration: none;
     color: white;
     border: 1px solid white;
     border-radius: 45px;
     padding: 0.5rem 1rem;
+}
+.page3 .a:hover{
+    background-color: #a3a3a3;
+    color: black;
 }
 .pagefoot {
     background-color: black;
@@ -243,3 +257,51 @@
     color: white;
     font-size: 1.1rem;
 }
+a:after {    
+    background: none repeat scroll 0 0 transparent;
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 2px;
+    left: 50%;
+    position: relative;
+    background: #fff;
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+    width: 0;
+  }
+  a:hover:after { 
+    width: 100%; 
+    left: 0; 
+  }
+
+  @media (max-width:600px) {
+    .page3{
+        display: block;
+        margin-top: 10%;
+    }
+    .page3 .left{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 5%;
+    }
+    .page3 .left img{
+        transform: translateX(50%);
+    }
+    .page3 .right{
+        width: 90%;
+        margin: auto;
+        gap: 10px;
+    }
+    .pagefoot .foot2 {
+        flex-direction: column-reverse;
+        gap: 20px;
+    }
+    .pagefoot .foot2 .left{
+        justify-content: space-between;
+    }
+    .pagefoot .foot2 .right{
+        gap: 10px;
+        justify-content:space-between;
+    }
+  }

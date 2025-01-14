@@ -32,6 +32,8 @@ function circleCursor( xchapta, ychapta){
   })
 }
 circleCursor();
+
+
 function firstPageAnim(){
   var tl = gsap.timeline();
   tl.from("nav", {
@@ -57,26 +59,52 @@ function firstPageAnim(){
 }
 firstPageAnim()
 
-document.querySelectorAll(".elem").forEach(function(elem) {
-  elem.addEventListener("mousemove", function(event) {
-      var imgHeight = elem.querySelector('img').offsetHeight;
-      var imgWidth = elem.querySelector('img').offsetWidth;
+function projectpage(){
 
-      var topPosition = event.clientY - elem.getBoundingClientRect().top - (imgHeight / 2);
-      var leftPosition = event.clientX - (imgWidth / 2); 
-
-      gsap.to(elem.querySelector('img'), {
-          opacity: 1,
-          ease: Power1,
-          top: topPosition,
-          left: leftPosition,
+  document.querySelectorAll(".elem").forEach(function(elem) {
+    elem.addEventListener("mouseover", function(event) {
+        var imgHeight = elem.querySelector('img').offsetHeight;
+        var imgWidth = elem.querySelector('img').offsetWidth;
+  
+        var topPosition = event.clientY - elem.getBoundingClientRect().top - (imgHeight / 2);
+        var leftPosition = event.clientX - (imgWidth / 2); 
+  
+        gsap.to(elem.querySelector('img'), {
+            opacity: 1,
+            ease: Power1,
+            top: topPosition,
+            left: leftPosition,
+            scale: 0.8
+        });
+        gsap.to(elem.querySelector('h1'), {
+          x: 100
       });
-  });
+      gsap.to(document.querySelector('.cursor'), {
+      //  scale: 9,
+       height: '100px',
+       width: '100px',
+       duration: 1
+    });
 
-  elem.addEventListener("mouseleave", function(event) {
-      gsap.to(elem.querySelector('img'), {
-          opacity: 0,
-          ease: Power1,
+    document.querySelector('.cursor').textContent = "VIEW"
+    });
+  
+    elem.addEventListener("mouseleave", function(event) {
+        gsap.to(elem.querySelector('img'), {
+            opacity: 0,
+            ease: Power1,
+        });
+        gsap.to(elem.querySelector('h1'), {
+          x: 0
       });
+      gsap.to(document.querySelector('.cursor'), {
+        // scale: 1,
+        height:'1rem',
+        width:'1rem',
+        duration: 1
+     });
+         document.querySelector('.cursor').textContent = ""
+    });
   });
-});
+}
+projectpage()
